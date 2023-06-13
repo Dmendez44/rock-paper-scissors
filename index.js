@@ -23,17 +23,52 @@ function playRound(playerSelection, computerSelection) {
     
     if (playerSelection === "Rock") {
         if (computerSelection === "Rock") return `Its A Tie! Your Choice: ${playerSelection} equals AI Choice: ${computerSelection}`;
-        else if (computerSelection === "Paper") return `You lose! Your Choice: ${playerSelection} loses to AI Choice: ${computerSelection}`;
+        else if (computerSelection === "Paper") return `Defeat! Your Choice: ${playerSelection} loses to AI Choice: ${computerSelection}`;
         return `You Win Your Choice: ${playerSelection} beats AI Choice: ${computerSelection}`; // its scissors
     }
     else if (playerSelection === "Paper") {
         if (computerSelection === "Rock") return `You Win! Your Choice: ${playerSelection} beats AI Choice: ${computerSelection}`;
         else if (computerSelection === "Paper") return `Its A Tie! Your Choice: ${playerSelection} equals AI Choice: ${computerSelection}`;
-        return `You lose! Your Choice: ${playerSelection} loses to AI Choice: ${computerSelection}`; // its scissors
+        return `Defeat! Your Choice: ${playerSelection} loses to AI Choice: ${computerSelection}`; // its scissors
     } else {
         // player selection must be scissors no need to check
-        if (computerSelection === "Rock") return`You lose! Your Choice: ${playerSelection} loses to AI Choice: ${computerSelection}`;
+        if (computerSelection === "Rock") return`Defeat! Your Choice: ${playerSelection} loses to AI Choice: ${computerSelection}`;
         else if (computerSelection === "Paper") return `You Win Your Choice: ${playerSelection} beats AI Choice: ${computerSelection}`;
         return `Its A Tie! Your Choice: ${playerSelection} equals AI Choice: ${computerSelection}`; // its scissors
+    }
+}
+
+function game() {
+    userScore = 0;
+    computerScore = 0;
+    rounds = 0;
+    keepGameGoing = true;
+
+    while (keepGameGoing) {
+        let userChoice = getUserChoice();
+        let computerChoice = getComputerChoice();
+        let outcome = playRound(userChoice, computerChoice)
+
+        if (userScore === 5) {
+            console.log(`User Wins! Your Score: ${userScore} vs ${computerScore}`);
+            keepGameGoing = false
+        } else if (computerScore === 5) {
+            console.log(`... The AI has won. Your Score ${userScore} vs ${computerScore}`);
+            keepGameGoing = false
+        }
+
+        if (keepGameGoing === true) {
+            if (outcome.includes("Win")) {
+                console.log(outcome);
+                userScore++;
+                rounds++;
+            } else if (outcome.includes("Tie")) {
+                console.log(outcome);
+                rounds++;
+            } else {
+                console.log(outcome);
+                computerScore++; // then computer must have won
+            }
+        }
     }
 }
