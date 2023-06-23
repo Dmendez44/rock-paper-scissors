@@ -4,12 +4,15 @@ const scissors = document.querySelector('#scissors');
 const displayResult = document.querySelector('#result');
 const displayScore = document.querySelector('#score');
 const displayGameEndResult = document.querySelector('#gameEndResult');
-const updateAiImage = document.querySelector("ai-img");
+const aiImage = document.querySelector(".ai-img");
+const aiWeapon = document.querySelector("div.ai-weapon")
+const resultInfo = document.querySelector("div.result-info")
 
 const content = document.querySelector('.content');
 
 const playAgain = document.createElement('button');
 playAgain.textContent = 'Play again';
+playAgain.classList.add('repeat')
 
 playAgain.addEventListener('click', () => {
     window.location.href="file:///home/danny1/repos/rock-paper-scissors/index.html"
@@ -74,23 +77,28 @@ function playRound(playerSelection, computerSelection) {
     });
 
 function updateScore(choice) {
-    let roundResult = playRound(choice, getComputerChoice());
+    let computerChoice = getComputerChoice()
+    let roundResult = playRound(choice, computerChoice);
     let userOutcome = gameResult(roundResult);
-
+    updateAiImage(computerChoice);
     if (userOutcome === "Win") {
         userScore++;
         round++;
         displayRoundOutcome(roundResult);
         displayScoreOutcome();
+        updateBorderColor("Win");
     } else if (userOutcome === 'Tie') {
         round++;
         displayRoundOutcome(roundResult);
         displayScoreOutcome();
+        updateBorderColor("Tie");
     } else {
         computerScore++;
         round++;
         displayRoundOutcome(roundResult);
         displayScoreOutcome();
+        updateBorderColor("Defeat");
+
     }
 }
 
@@ -104,6 +112,37 @@ function gameResult(gameResult) {;
      }
 }
 
+function updateAiImage(computerChoice) {
+    if (computerChoice === 'Rock') {
+        aiImage.src = './imgs/rock.png';
+    } else if (computerChoice === 'Paper') {
+        aiImage.src = './imgs/paper.png';
+    } else {
+        aiImage.src = './imgs/scissors.png';
+    }
+}
+
+function updateBorderColor(roundOutcome) {
+    aiWeapon.classList.remove('win')
+    aiWeapon.classList.remove('tie')
+    aiWeapon.classList.remove('lose')
+
+    resultInfo.classList.remove('win')
+    resultInfo.classList.remove('tie')
+    resultInfo.classList.remove('lose')
+
+    
+    if (roundOutcome === "Win") {
+        aiWeapon.classList.toggle('win')
+        resultInfo.classList.toggle('win')
+    } else if (roundOutcome === "Defeat") {
+        aiWeapon.classList.toggle('lose')
+        resultInfo.classList.toggle('lose')
+    } else {
+        aiWeapon.classList.toggle('tie')
+        resultInfo.classList.toggle('tie')
+    }
+}
 function displayRoundOutcome(roundResult) {
     displayResult.textContent = roundResult;
 }
