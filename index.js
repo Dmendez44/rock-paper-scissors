@@ -15,7 +15,7 @@ playAgain.textContent = 'Play again';
 playAgain.classList.add('repeat')
 
 playAgain.addEventListener('click', () => {
-    window.location.href="file:///home/danny1/repos/rock-paper-scissors/index.html"
+    window.location.href="https://dmendez44.github.io/rock-paper-scissors/"
 });
 
 let userScore = 0;
