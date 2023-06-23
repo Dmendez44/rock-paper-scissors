@@ -68,7 +68,7 @@ h1 {
     margin-top: 10px;
 }
 
-img {
+.weapon-img {
     width: 100%;
     height: 150px;
     object-fit: cover;
@@ -85,6 +85,39 @@ img {
     border: 1px solid black;
 }
 
+.game-info {
+    display: flex;
+    border: 1px solid green;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.ai-weapon {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.result-info {
+    border: 1px solid black;
+    width: 500px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around}
+
+.ai-weapon img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.ai-weapon > p {
+    padding: 20px 0px;
+}
 
 .grow-on-hover {
     display: inline-block;

@@ -2,12 +2,13 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const displayResult = document.querySelector('#result');
-const displayScore = document.querySelector('#score')
-const displayGameEndResult = document.querySelector('#gameEndResult')
+const displayScore = document.querySelector('#score');
+const displayGameEndResult = document.querySelector('#gameEndResult');
+const updateAiImage = document.querySelector("ai-img");
 
-const content = document.querySelector('.content')
+const content = document.querySelector('.content');
 
-const playAgain = document.createElement('button')
+const playAgain = document.createElement('button');
 playAgain.textContent = 'Play again';
 
 playAgain.addEventListener('click', () => {
@@ -74,50 +75,50 @@ function playRound(playerSelection, computerSelection) {
 
 function updateScore(choice) {
     let roundResult = playRound(choice, getComputerChoice());
-    let userOutcome = gameResult(roundResult)
+    let userOutcome = gameResult(roundResult);
 
     if (userOutcome === "Win") {
         userScore++;
         round++;
-        displayRoundOutcome(roundResult)
-        displayScoreOutcome()
+        displayRoundOutcome(roundResult);
+        displayScoreOutcome();
     } else if (userOutcome === 'Tie') {
         round++;
-        displayRoundOutcome(roundResult)
-        displayScoreOutcome()
+        displayRoundOutcome(roundResult);
+        displayScoreOutcome();
     } else {
         computerScore++;
         round++;
-        displayRoundOutcome(roundResult)
-        displayScoreOutcome()
+        displayRoundOutcome(roundResult);
+        displayScoreOutcome();
     }
 }
 
 function gameResult(gameResult) {;
     if (gameResult.includes("Win")) {
-            return "Win"
+            return "Win";
     } else if (gameResult.includes("Tie")) {
-                return "Tie"
+                return "Tie";
     } else {
         return "Defeat"; // then computer must have won
      }
 }
 
 function displayRoundOutcome(roundResult) {
-    displayResult.textContent = roundResult
+    displayResult.textContent = roundResult;
 }
 
 function displayScoreOutcome() {
-    displayScore.textContent = `Your Score: ${userScore} vs AI Score: ${computerScore}`
+    displayScore.textContent = `Player score: ${userScore} | AI Score: ${computerScore}`;
 }
 
 function displayGameEnd() {
     if (userScore === 5) {
         displayGameEndResult.textContent = 'You win!';
-        content.appendChild(playAgain)
+        content.appendChild(playAgain);
     } else {
         displayGameEndResult.textContent = 'You lost...';
-        content.appendChild(playAgain)
+        content.appendChild(playAgain);
 
     }
 

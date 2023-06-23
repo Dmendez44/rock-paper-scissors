@@ -23,22 +23,24 @@
         </div>
         <div class="weapon-selection">
             <button id="rock" class="weapon grow-on-hover cool-button">
-                <img src="./imgs/rock.png" alt="an icon of a rock hand">
+                <img src="./imgs/rock.png" class="weapon-img" alt="an icon of a rock hand">
             </button>
             <button id="paper" class="weapon grow-on-hover cool-button">
-                <img src="./imgs/paper.png" alt="an icon of a paper hand">
+                <img src="./imgs/paper.png" class="weapon-img" alt="an icon of a paper hand">
             </button>
             <button id="scissors" class="weapon grow-on-hover cool-button">
-                <img src="./imgs/scissors.png" alt="an icon of a paper hand">
+                <img src="./imgs/scissors.png" class="weapon-img" alt="an icon of a paper hand">
             </button>
         </div>
-        <div class="seperator"></div>
         <div class="game-info">
-            <div class="ai-weapon"></div>
+            <div class="ai-weapon">
+                <p> Enemy Weapon: </p>
+                <img src="./imgs/questionmark.png" class="ai-img" alt="question mark">
+            </div>
             <div class="result-info">
-                <div id="result"></div>
-                <div id="score"></div>
-                <div id="gameEndResult"></div>
+                <div id="result">Round result:</div>
+                <div id="score">Player score: | AI score: </div>
+                <div id="gameEndResult">Win or Lose</div>
             </div>
         </div>
     </div>
